@@ -279,91 +279,81 @@ nav a {
 }
 
 /* ==========================================================================
-   6. RESPONSIVE (CELULARES)
-   ========================================================================== */
-/* ==========================================================================
-   6. RESPONSIVE PROFESIONAL (CELULAR Y TABLET)
+   6. RESPONSIVE PROFESIONAL OPTIMIZADO
    ========================================================================== */
 
 @media (max-width: 768px) {
-    body {
-        padding: 10px; /* Menos espacio exterior en móviles */
-    }
-
+    /* Contenedor principal con márgenes más limpios */
     .contenedor { 
-        margin: 20px auto; /* Reducir el margen superior de 80px a 20px */
-        padding: 20px 15px; 
-        border-radius: 15px; /* Bordes menos pronunciados en móvil */
+        margin: 20px 10px; 
+        padding: 15px; 
+        border-radius: 15px;
     }
     
+    /* Botón de WhatsApp más accesible para el pulgar */
     .whatsapp-flotante-superior { 
         top: auto; 
-        bottom: 20px; 
+        bottom: 25px; 
         right: 20px; 
-        padding: 10px 18px; 
+        padding: 12px 20px; 
         font-size: 14px;
-        width: auto;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
 
+    /* Título que no se corta en pantallas pequeñas */
     .titulo-llamativo { 
-        font-size: 38px; /* Tamaño más manejable para el título */
-        line-height: 1.1;
+        font-size: clamp(24px, 8vw, 32px); 
+        text-align: center;
+        line-height: 1.2;
     }
 
+    /* Menú tipo "botones" más fáciles de tocar */
     nav { 
-        display: flex; 
-        flex-wrap: wrap; 
-        justify-content: center; 
-        gap: 5px; 
-    }
-
-    nav a { 
-        margin: 5px; 
-        font-size: 12px; 
-        padding: 5px;
-    }
-
-    /* Ajuste de la imagen principal */
-    .contenedor-imagen-proporcional { 
-        height: auto; /* IMPORTANTE: Dejar que la altura sea automática */
-        min-height: 250px; 
-    }
-
-    .titulo-blanco {
-        font-size: 24px;
-    }
-
-    /* Tabla de servicios responsiva */
-    .tabla-servicios th, .tabla-servicios td {
-        padding: 12px 10px;
-        font-size: 14px;
-    }
-
-    .contenedor-fotos-pequenas {
-        grid-template-columns: repeat(2, 1fr); /* 2 fotos por fila */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Dos botones por fila */
         gap: 8px;
+        padding: 10px 0;
     }
-
-    .foto-miniatura img { 
-        height: 140px; 
-    }
-
-    /* Lightbox: Imagen más grande en móvil */
-    .contenido-lightbox {
-        width: 100%;
-        max-height: 80vh;
-    }
-}
-
-@media (max-width: 480px) {
-    .titulo-llamativo { font-size: 32px; }
     
-    /* En teléfonos muy pequeños, 1 sola columna para que se vea el detalle */
-    .contenedor-fotos-pequenas { 
-        grid-template-columns: 1fr; 
-    } 
+    nav a { 
+        margin: 0; 
+        padding: 12px 5px; /* Más espacio para el dedo */
+        font-size: 13px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    /* Ajuste de columnas para que el contenido no se vea apretado */
+    .fila { 
+        flex-direction: column; 
+        gap: 20px;
+    }
     
-    .foto-miniatura img { 
-        height: 250px; 
+    /* Galería de fotos en 2 columnas (en lugar de una sola muy larga) */
+    .contenedor-galeria {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    /* Imágenes con proporción fija para que no se deformen */
+    .contenedor-imagen-proporcional { 
+        height: auto;
+        aspect-ratio: 4 / 3; 
+        border-radius: 10px;
+    }
+
+    .foto-miniatura img {
+        height: 150px; /* Tamaño uniforme para la rejilla */
+        object-fit: cover;
+    }
+
+    /* Botón de cerrar el visor de fotos más grande */
+    .cerrar-lightbox {
+        top: 20px;
+        right: 20px;
+        font-size: 40px;
+        padding: 10px;
     }
 }
