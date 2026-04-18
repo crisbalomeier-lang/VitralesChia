@@ -75,11 +75,6 @@ nav a {
     font-size: 14px; 
 }
 
-/* ✅ CORRECCIÓN: Estilo añadido para el enlace de contacto con scroll */
-nav a[data-scroll] {
-    cursor: pointer;
-}
-
 /* ==========================================================================
    3. SECCIÓN DE GALERÍA Y TRABAJOS (TABLA DE SERVICIOS)
    ========================================================================== */
@@ -193,12 +188,6 @@ nav a[data-scroll] {
     transition: 0.3s;
 }
 
-/* ✅ CORRECCIÓN: hover añadido a miniaturas (faltaba efecto visual) */
-.foto-miniatura img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-}
-
 /* ==========================================================================
    4. VISOR DE IMÁGENES (LIGHTBOX)
    ========================================================================== */
@@ -236,8 +225,8 @@ nav a[data-scroll] {
 }
 
 /* ==========================================================================
-   5. OTROS COMPONENTES
-   ========================================================================== */
+   5. OTROS COMPONENTES (RECUPERANDO TAMAÑO ORIGINAL)
+   ========================================================================= */
 .card-artistica { 
     border-radius: 20px; 
     overflow: hidden; 
@@ -245,6 +234,7 @@ nav a[data-scroll] {
     margin-bottom: 50px; 
 }
 
+/* AQUÍ SE RECUPERA EL TAMAÑO DE 500PX ORIGINAL */
 .contenedor-imagen-proporcional { 
     width: 100%; 
     height: 500px; 
@@ -264,44 +254,193 @@ nav a[data-scroll] {
 
 .titulo-blanco { 
     font-family: 'DM Serif Display', serif; 
-    color: #fff; 
-    font-size: 36px; 
-    margin: 0; 
+    color: #fff; font-size: 36px; margin: 0; 
 }
 
 .texto-blanco { 
-    color: #ccc; 
-    font-size: 18px; 
-    margin-top: 10px; 
+    color: #ccc; font-size: 18px; margin-top: 10px; 
 }
 
 .titulo-seccion { 
     text-align: center; 
     font-family: 'DM Serif Display', serif; 
-    font-size: 32px; 
-    margin: 40px 0; 
-    border-bottom: 1px solid #ddd; 
-    padding-bottom: 10px; 
+    font-size: 32px; margin: 40px 0; 
+    border-bottom: 1px solid #ddd; padding-bottom: 10px; 
 }
 
 .fila-contacto-centrada { 
-    text-align: center; 
-    background: #f9f9f9; 
-    padding: 40px; 
-    border-radius: 20px; 
+    text-align: center; background: #f9f9f9; padding: 40px; border-radius: 20px; 
 }
 
-/* ✅ CORRECCIÓN: Estilos añadidos para .col-info y btn-maps-google que carecían de definición */
+.btn-volver { 
+    padding: 12px 30px; border-radius: 50px; 
+    background: #1a1a1a; color: white; border: none; 
+    cursor: pointer; font-weight: bold; margin-top: 20px;
+}
+
+/* ==========================================================================
+   6. NUEVOS COMPONENTES — Sobre nosotros, Footer, Nav activo, Fade, Loading
+   ========================================================================== */
+
+/* MEJORA 3: Enlace activo en el nav */
+nav a.nav-activo {
+    color: #1a1a1a;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 2px;
+}
+
+/* MEJORA 2: Soporte de transición de opacidad para secciones SPA */
+.seccion-spa {
+    transition: opacity 0.2s ease;
+}
+
+/* MEJORA 4: Sección Sobre nosotros */
+.sobre-nosotros {
+    margin-bottom: 40px;
+}
+
+.bloque-nosotros {
+    background: #f9f9f9;
+    border-radius: 20px;
+    padding: 32px 36px;
+    line-height: 1.8;
+    color: #444;
+    font-size: 16px;
+}
+
+.bloque-nosotros p {
+    margin: 0 0 16px;
+}
+
+.bloque-nosotros p:last-of-type {
+    margin-bottom: 24px;
+}
+
+.chips-servicios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.chips-servicios span {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 7px 16px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.chips-servicios span i {
+    color: #25d366;
+    font-size: 12px;
+}
+
+/* MEJORA 1: Indicador de carga de galería */
+.galeria-loading {
+    text-align: center;
+    padding: 40px;
+    color: #888;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.galeria-loading i {
+    margin-right: 10px;
+    color: #1a1a1a;
+}
+
+/* MEJORA 8: Footer */
+.site-footer {
+    margin-top: 60px;
+    background: #1a1a1a;
+    border-radius: 20px;
+    padding: 40px;
+    color: #ccc;
+    font-size: 14px;
+}
+
+.footer-contenido {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 180px;
+}
+
+.footer-col strong {
+    display: block;
+    color: #fff;
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.footer-col p {
+    margin: 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-col i {
+    color: #25d366;
+    width: 16px;
+}
+
+.footer-redes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.footer-redes a {
+    color: #ccc;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+}
+
+.footer-redes a:hover {
+    color: #fff;
+}
+
+.footer-redes i {
+    color: #25d366;
+    font-size: 16px;
+}
+
+.footer-copy {
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    text-align: center;
+    color: #666;
+    font-size: 13px;
+}
+
+/* Estilos para .col-info y btn-maps-google */
 .col-info p {
     font-size: 16px;
     color: #444;
     margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
 }
 
-.col-info i {
-    margin-right: 8px;
-    color: #1a1a1a;
-}
+.col-info i { color: #1a1a1a; }
 
 .btn-maps-google {
     display: inline-flex;
@@ -325,14 +464,14 @@ nav a[data-scroll] {
     box-shadow: 0 3px 10px rgba(66,133,244,0.2);
 }
 
-.btn-volver { 
-    padding: 12px 30px; 
-    border-radius: 50px; 
-    background: #1a1a1a; 
-    color: white; 
-    border: none; 
-    cursor: pointer; 
-    font-weight: bold; 
+.btn-volver {
+    padding: 12px 30px;
+    border-radius: 50px;
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
     margin-top: 20px;
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
@@ -344,88 +483,63 @@ nav a[data-scroll] {
     transform: translateY(-2px);
 }
 
+.foto-miniatura img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
 /* ==========================================================================
-   6. RESPONSIVE — SOLO MÓVIL (≤ 768px)
-      Objetivo: verse lo más parecido posible a la versión de escritorio.
-      El diseño de PC no se toca en absoluto.
+   7. RESPONSIVE — SOLO MÓVIL (max-width: 768px)
+      El diseño de PC no cambia. Solo se adapta lo necesario.
    ========================================================================== */
 
 @media (max-width: 768px) {
 
-    /* ------------------------------------------------------------------
-       BODY Y CONTENEDOR
-    ------------------------------------------------------------------ */
     body {
         padding: 6px;
-        background-attachment: scroll; /* fix bug Safari iOS con fixed */
+        background-attachment: scroll;
     }
 
     .contenedor {
-        margin: 8px 4px 100px 4px; /* margen inferior para que WA no tape nada */
+        margin: 8px 4px 100px 4px;
         padding: 20px 16px;
         border-radius: 18px;
     }
 
-    header {
-        margin-bottom: 20px;
-    }
+    header { margin-bottom: 20px; }
 
-    /* ------------------------------------------------------------------
-       TÍTULO PRINCIPAL
-       En PC es 64px. En móvil usamos clamp para que escale con la pantalla
-       pero mantenga la misma presencia visual proporcional.
-    ------------------------------------------------------------------ */
     .titulo-llamativo {
         font-size: clamp(32px, 10vw, 46px);
         line-height: 1.1;
         letter-spacing: -0.5px;
     }
 
-    /* ------------------------------------------------------------------
-       MENÚ DE NAVEGACIÓN
-       PROBLEMA VISIBLE: los 3 enlaces no caben en una fila → se parten.
-       SOLUCIÓN: una sola fila flex con fuente reducida y sin word-break,
-       igual de limpio que en PC pero adaptado al ancho del celular.
-    ------------------------------------------------------------------ */
     nav {
         display: flex;
-        flex-direction: row;         /* misma orientación que en PC */
+        flex-direction: row;
         justify-content: center;
         align-items: center;
+        flex-wrap: nowrap;
         gap: 0;
         padding: 12px 0;
         margin-top: 16px;
-        flex-wrap: nowrap;           /* forzar una sola línea */
     }
 
     nav a {
         margin: 0 8px;
         padding: 8px 2px;
-        font-size: 10.5px;           /* reducido para que quepan en 1 línea */
+        font-size: 10.5px;
         letter-spacing: 0.4px;
-        white-space: nowrap;         /* evita que "GALERÍA DE TRABAJOS" se parta */
-        color: #555;
-        font-weight: 600;
-        text-transform: uppercase;
-        text-align: center;
+        white-space: nowrap;
         background: none;
         border-radius: 0;
     }
 
-    /* ------------------------------------------------------------------
-       IMAGEN HERO (logo/tarjeta principal)
-       En PC: 500px fijo. En móvil: proporcional al ancho disponible.
-    ------------------------------------------------------------------ */
     .contenedor-imagen-proporcional {
         height: auto;
-        aspect-ratio: 4 / 3;        /* misma proporción visual que en PC */
+        aspect-ratio: 4 / 3;
     }
 
-    /* ------------------------------------------------------------------
-       TÍTULO "VITRALES RELIGIOSOS Y ARTISTICOS"
-       PROBLEMA VISIBLE: se ve enorme en móvil y se corta.
-       SOLUCIÓN: reducir a escala proporcional con clamp.
-    ------------------------------------------------------------------ */
     .titulo-blanco {
         font-size: clamp(16px, 5vw, 22px);
         line-height: 1.3;
@@ -436,15 +550,18 @@ nav a[data-scroll] {
         margin-top: 6px;
     }
 
-    .info-card {
-        padding: 18px 14px;
+    .info-card { padding: 18px 14px; }
+
+    .bloque-nosotros {
+        padding: 20px 16px;
+        font-size: 14px;
     }
 
-    /* ------------------------------------------------------------------
-       BOTÓN WHATSAPP
-       PROBLEMA VISIBLE: tapa texto en el centro de la pantalla.
-       SOLUCIÓN: moverlo a la esquina inferior derecha, compacto.
-    ------------------------------------------------------------------ */
+    .chips-servicios span {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
     .whatsapp-flotante-superior {
         top: auto;
         bottom: 18px;
@@ -452,13 +569,8 @@ nav a[data-scroll] {
         left: auto;
         padding: 10px 16px;
         font-size: 13px;
-        border-radius: 50px;
-        gap: 8px;
     }
 
-    /* ------------------------------------------------------------------
-       GALERÍA — TARJETA "VER GALERÍA COMPLETA"
-    ------------------------------------------------------------------ */
     .card-galeria img {
         height: 210px;
         object-fit: cover;
@@ -469,14 +581,8 @@ nav a[data-scroll] {
         gap: 16px;
     }
 
-    .pie-galeria h3 {
-        font-size: 19px;
-    }
+    .pie-galeria h3 { font-size: 19px; }
 
-    /* ------------------------------------------------------------------
-       GALERÍA DETALLADA — MINIATURAS
-       2 columnas, altura uniforme, sin deformación
-    ------------------------------------------------------------------ */
     .contenedor-fotos-pequenas {
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
@@ -489,38 +595,17 @@ nav a[data-scroll] {
         border-radius: 8px;
     }
 
-    /* ------------------------------------------------------------------
-       TABLA DE SERVICIOS
-    ------------------------------------------------------------------ */
     .titulo-seccion {
         font-size: clamp(19px, 5.5vw, 24px);
         margin: 22px 0 14px;
     }
 
-    .tabla-servicios th {
-        font-size: 14px;
-        padding: 14px 10px;
-    }
+    .tabla-servicios th { font-size: 14px; padding: 14px 10px; }
+    .tabla-servicios td { font-size: 13px; padding: 12px 10px; }
 
-    .tabla-servicios td {
-        font-size: 13px;
-        padding: 12px 10px;
-    }
+    .fila-contacto-centrada { padding: 22px 14px; }
+    .col-info p { font-size: 14px; }
 
-    /* ------------------------------------------------------------------
-       SECCIÓN CONTACTO
-    ------------------------------------------------------------------ */
-    .fila-contacto-centrada {
-        padding: 22px 14px;
-    }
-
-    .col-info p {
-        font-size: 14px;
-    }
-
-    /* ------------------------------------------------------------------
-       BOTONES DE VOLVER
-    ------------------------------------------------------------------ */
     .btn-volver {
         width: 100%;
         padding: 13px;
@@ -528,14 +613,22 @@ nav a[data-scroll] {
         box-sizing: border-box;
     }
 
-    /* ------------------------------------------------------------------
-       LIGHTBOX (VISOR DE FOTOS)
-    ------------------------------------------------------------------ */
     .cerrar-lightbox {
         top: 14px;
         right: 14px;
         font-size: 46px;
         line-height: 1;
+    }
+
+    .footer-contenido {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .site-footer {
+        padding: 28px 18px;
+        border-radius: 14px;
+        margin-top: 30px;
     }
 
 } /* fin @media móvil */
