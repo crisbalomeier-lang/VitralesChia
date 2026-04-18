@@ -75,6 +75,11 @@ nav a {
     font-size: 14px; 
 }
 
+/* ✅ CORRECCIÓN: Estilo añadido para el enlace de contacto con scroll */
+nav a[data-scroll] {
+    cursor: pointer;
+}
+
 /* ==========================================================================
    3. SECCIÓN DE GALERÍA Y TRABAJOS (TABLA DE SERVICIOS)
    ========================================================================== */
@@ -188,6 +193,12 @@ nav a {
     transition: 0.3s;
 }
 
+/* ✅ CORRECCIÓN: hover añadido a miniaturas (faltaba efecto visual) */
+.foto-miniatura img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
 /* ==========================================================================
    4. VISOR DE IMÁGENES (LIGHTBOX)
    ========================================================================== */
@@ -225,8 +236,8 @@ nav a {
 }
 
 /* ==========================================================================
-   5. OTROS COMPONENTES (RECUPERANDO TAMAÑO ORIGINAL)
-   ========================================================================= */
+   5. OTROS COMPONENTES
+   ========================================================================== */
 .card-artistica { 
     border-radius: 20px; 
     overflow: hidden; 
@@ -234,7 +245,6 @@ nav a {
     margin-bottom: 50px; 
 }
 
-/* AQUÍ SE RECUPERA EL TAMAÑO DE 500PX ORIGINAL */
 .contenedor-imagen-proporcional { 
     width: 100%; 
     height: 500px; 
@@ -254,28 +264,84 @@ nav a {
 
 .titulo-blanco { 
     font-family: 'DM Serif Display', serif; 
-    color: #fff; font-size: 36px; margin: 0; 
+    color: #fff; 
+    font-size: 36px; 
+    margin: 0; 
 }
 
 .texto-blanco { 
-    color: #ccc; font-size: 18px; margin-top: 10px; 
+    color: #ccc; 
+    font-size: 18px; 
+    margin-top: 10px; 
 }
 
 .titulo-seccion { 
     text-align: center; 
     font-family: 'DM Serif Display', serif; 
-    font-size: 32px; margin: 40px 0; 
-    border-bottom: 1px solid #ddd; padding-bottom: 10px; 
+    font-size: 32px; 
+    margin: 40px 0; 
+    border-bottom: 1px solid #ddd; 
+    padding-bottom: 10px; 
 }
 
 .fila-contacto-centrada { 
-    text-align: center; background: #f9f9f9; padding: 40px; border-radius: 20px; 
+    text-align: center; 
+    background: #f9f9f9; 
+    padding: 40px; 
+    border-radius: 20px; 
+}
+
+/* ✅ CORRECCIÓN: Estilos añadidos para .col-info y btn-maps-google que carecían de definición */
+.col-info p {
+    font-size: 16px;
+    color: #444;
+    margin: 10px 0;
+}
+
+.col-info i {
+    margin-right: 8px;
+    color: #1a1a1a;
+}
+
+.btn-maps-google {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 12px 24px;
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 50px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.btn-maps-google:hover {
+    border-color: #4285F4;
+    color: #4285F4;
+    box-shadow: 0 3px 10px rgba(66,133,244,0.2);
 }
 
 .btn-volver { 
-    padding: 12px 30px; border-radius: 50px; 
-    background: #1a1a1a; color: white; border: none; 
-    cursor: pointer; font-weight: bold; margin-top: 20px;
+    padding: 12px 30px; 
+    border-radius: 50px; 
+    background: #1a1a1a; 
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+    font-weight: bold; 
+    margin-top: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.btn-volver:hover {
+    background: #333;
+    transform: translateY(-2px);
 }
 
 /* ==========================================================================
@@ -310,14 +376,14 @@ nav a {
     /* Menú tipo "botones" más fáciles de tocar */
     nav { 
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* Dos botones por fila */
+        grid-template-columns: repeat(2, 1fr);
         gap: 8px;
         padding: 10px 0;
     }
     
     nav a { 
         margin: 0; 
-        padding: 12px 5px; /* Más espacio para el dedo */
+        padding: 12px 5px;
         font-size: 13px;
         background: rgba(255,255,255,0.1);
         border-radius: 8px;
@@ -330,7 +396,7 @@ nav a {
         gap: 20px;
     }
     
-    /* Galería de fotos en 2 columnas (en lugar de una sola muy larga) */
+    /* Galería de fotos en 2 columnas */
     .contenedor-galeria {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -345,7 +411,7 @@ nav a {
     }
 
     .foto-miniatura img {
-        height: 150px; /* Tamaño uniforme para la rejilla */
+        height: 150px;
         object-fit: cover;
     }
 
@@ -357,3 +423,16 @@ nav a {
         padding: 10px;
     }
 
+    /* ✅ CORRECCIÓN: Tabla de servicios legible en móvil */
+    .tabla-servicios th,
+    .tabla-servicios td {
+        padding: 12px;
+        font-size: 13px;
+    }
+
+    /* ✅ CORRECCIÓN: Imagen hero adaptada en móvil */
+    .card-galeria img {
+        height: 220px;
+    }
+
+} /* ✅ CORRECCIÓN: Llave de cierre del @media que faltaba en el archivo original */
